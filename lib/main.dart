@@ -33,12 +33,12 @@ var humidity;
 var windSpeed;
 
 Future getWeather () async{ 
-  http.Response response = await http.get("http://api.openweathermap.org/data/2.5/weather?q=Nairobi&appid=5b5cd7a58032f5a19c229fe9bd91c32e");
+  http.Response response = await http.get("http://api.openweathermap.org/data/2.5/weather?q=Nairobi&units=imperial&appid=5b5cd7a58032f5a19c229fe9bd91c32e");
   var results = jsonDecode(response.body);
   setState(() {
     this.temp = results['main']['temp'];
-    this.description = results['weather']['0']['description'];
-    this.currently = results['weather']['0']['main'];
+    this.description = results['weather'][0]['description'];
+    this.currently = results['weather'][0]['main'];
     this.humidity = results['main']['humidity'];
     this.windSpeed = results['wind']['speed'];
   });
